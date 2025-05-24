@@ -18,3 +18,12 @@ conn.commit()
 conn.close()
 
 print("Employee added successfully!")
+# add_employee.py
+from flask import request, jsonify
+
+def register_routes(app):
+    @app.route('/add-employee', methods=['POST'])
+    def add_employee():
+        data = request.json
+        # Add employee logic here
+        return jsonify({'status': 'success', 'employee': data})

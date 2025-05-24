@@ -107,6 +107,18 @@ def logout():
     session.clear()
     return redirect(url_for('login'))
 
-if __name__ == '__main__':
-    init_db()
+# app.py
+from flask import Flask
+from add_employee import register_routes
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Punch In System is Live!"
+
+# Register routes from add_employee.py
+register_routes(app)
+
+if __name__ == "__main__":
     app.run(debug=True)
